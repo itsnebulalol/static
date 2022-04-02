@@ -2,6 +2,7 @@
 
 # Upgrades and installs nessasary tools
 # Run with "curl https://static.itsnebula.net/firstinstall.sh | bash"
+# THIS WILL INSTALL DOCKER - THE CHOICES ARE BROKEN
 
 apt update
 apt upgrade -y
