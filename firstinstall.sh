@@ -7,38 +7,32 @@ apt update
 apt upgrade -y
 apt install sudo git curl wget -y
 
-while true
-do
-      read -r -p "Do you want to install Docker? [Y/n] " input
+read -r -p "Do you want to install Docker? [Y/n] " input
  
-      case $input in
-            [yY][eE][sS]|[yY])
-                  curl https://get.docker.com | bash
-                  break
-                  ;;
-            [nN][oO]|[nN])
-                  break
-                  ;;
-            *)
-                  echo "Please answer Y or N."
-                  ;;
-      esac      
-done
+case $input in
+      [yY][eE][sS]|[yY])
+            curl https://get.docker.com | bash
+            ;;
+      [nN][oO]|[nN])
+            exit
+            ;;
+      *)
+            echo "Please answer Y or N."
+            exit 1
+            ;;
+esac
 
-while true
-do
-      read -r -p "Do you want to install Docker Compose v2? [Y/n] " input
+read -r -p "Do you want to install Docker Compose v2? [Y/n] " input2
  
-      case $input in
-            [yY][eE][sS]|[yY])
-                  curl https://static.itsnebula.net/compose.sh | bash
-                  break
-                  ;;
-            [nN][oO]|[nN])
-                  break
-                  ;;
-            *)
-                  echo "Please answer Y or N."
-                  ;;
-      esac      
-done
+case $input2 in
+      [yY][eE][sS]|[yY])
+            curl https://static.itsnebula.net/compose.sh | bash
+            ;;
+      [nN][oO]|[nN])
+            exit
+            ;;
+      *)
+            echo "Please answer Y or N."
+            exit 1
+            ;;
+esac
