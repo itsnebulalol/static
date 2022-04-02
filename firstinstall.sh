@@ -7,6 +7,20 @@ apt update
 apt upgrade -y
 apt install sudo git curl wget -y
 
-[[ "$(read -e -p 'Do you want to install Docker? [y/N]> '; echo $REPLY)" == [Yy]* ]] && (curl https://get.docker.com | bash) || (echo Not installing Docker && exit)
+echo "Do you want to install Docker? [y/N]> " 
+read docker
+if [[ $docker == y* ]]; then
+    curl https://get.docker.com | bash
+else
+    echo Not installing Docker
+    exit
+fi
 
-[[ "$(read -e -p 'Do you want to install Docker Compose v2? [y/N]> '; echo $REPLY)" == [Yy]* ]] && (curl https://static.itsnebula.net/compose.sh | bash) || (echo Not installing Docker Compose && exit)
+echo "Do you want to install Docker Compose v2? [y/N]> " 
+read dockerco
+if [[ $dockerco == y* ]]; then
+    curl https://static.itsnebula.net/compose.sh | bash
+else
+    echo Not installing Docker Compose
+    exit
+fi
