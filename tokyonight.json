@@ -1,6 +1,7 @@
 {
 	"name": "tokyonight",
 	"theme_color_map": {
+		"KEYBOARD": ["#1a1b26", "#FFFFFF"],
 		"BACKGROUND_PRIMARY": ["#1a1b26", "#FFFFFF"],
 		"BACKGROUND_SECONDARY": ["#171722", "#FFFFFF"],
 		"BACKGROUND_SECONDARY_ALT": ["#13131a", "#FFFFFF"],
@@ -38,5 +39,8 @@
 		"PRIMARY_DARK_700": "#282a36",
 		"PRIMARY_DARK_800": "#1a1b26",
 		"PRIMARY_DARK_900": "#b1bae6"
+	}
+	"unsafe_colors": {
+		"CHAT_GREY": "#1a1b26"
 	}
 }
