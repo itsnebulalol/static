@@ -1,6 +1,7 @@
 {
 	"name": "lotus",
 	"theme_color_map": {
+		"KEYBOARD": ["#5e3640", "#FFFFFF"],
 		"BACKGROUND_PRIMARY": ["#5e3640", "#FFFFFF"],
 		"BACKGROUND_SECONDARY": ["#49292f", "#FFFFFF"],
 		"BACKGROUND_SECONDARY_ALT": ["#3b1d24", "#FFFFFF"],
@@ -38,5 +39,8 @@
 		"PRIMARY_DARK_700": "#5e3640",
 		"PRIMARY_DARK_800": "#5e3640",
 		"PRIMARY_DARK_900": "#FFFFFF"
+	},
+	"unsafe_colors": {
+		"CHAT_GREY": "#5e3640"
 	}
 }
