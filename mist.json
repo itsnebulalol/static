@@ -39,7 +39,7 @@
 		"PRIMARY_DARK_700": "#56626d",
 		"PRIMARY_DARK_800": "#56626d",
 		"PRIMARY_DARK_900": "#FFFFFF"
-	}
+	},
 	"unsafe_colors": {
 		"CHAT_GREY": "#56626d"
 	}
