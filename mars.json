@@ -1,6 +1,7 @@
 {
 	"name": "mars",
 	"theme_color_map": {
+		"KEYBOARD": ["#36263a", "#FFFFFF"],
 		"BACKGROUND_PRIMARY": ["#36263a", "#FFFFFF"],
 		"BACKGROUND_SECONDARY": ["#281d30", "#FFFFFF"],
 		"BACKGROUND_SECONDARY_ALT": ["#211828", "#FFFFFF"],
@@ -38,5 +39,8 @@
 		"PRIMARY_DARK_700": "#36263a",
 		"PRIMARY_DARK_800": "#36263a",
 		"PRIMARY_DARK_900": "#FFFFFF"
+	}
+	"unsafe_colors": {
+		"CHAT_GREY": "#36263a"
 	}
 }
