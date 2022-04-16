@@ -1,6 +1,7 @@
 {
 	"name": "mist",
 	"theme_color_map": {
+		"KEYBOARD": ["#56626d", "#FFFFFF"],
 		"BACKGROUND_PRIMARY": ["#56626d", "#FFFFFF"],
 		"BACKGROUND_SECONDARY": ["#7c898b", "#FFFFFF"],
 		"BACKGROUND_SECONDARY_ALT": ["#7c898b", "#FFFFFF"],
@@ -38,5 +39,8 @@
 		"PRIMARY_DARK_700": "#56626d",
 		"PRIMARY_DARK_800": "#56626d",
 		"PRIMARY_DARK_900": "#FFFFFF"
+	}
+	"unsafe_colors": {
+		"CHAT_GREY": "#56626d"
 	}
 }
