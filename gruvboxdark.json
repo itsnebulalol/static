@@ -1,6 +1,7 @@
 {
 	"name": "gruvboxdark",
 	"theme_color_map": {
+		"KEYBOARD": ["#282828", "#FFFFFF"],
 		"BACKGROUND_PRIMARY": ["#282828", "#FFFFFF"],
 		"BACKGROUND_SECONDARY": ["#3c3836", "#FFFFFF"],
 		"BACKGROUND_SECONDARY_ALT": ["#3c3836", "#FFFFFF"],
@@ -38,5 +39,8 @@
 		"PRIMARY_DARK_700": "#fbf1c7",
 		"PRIMARY_DARK_800": "#282828",
 		"PRIMARY_DARK_900": "#FFFFFF"
+	},
+	"unsafe_colors": {
+		"CHAT_GREY": "#282828"
 	}
 }
