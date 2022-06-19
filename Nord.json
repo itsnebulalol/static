@@ -1,6 +1,6 @@
 {
 	"name": "Nord",
-    "description": "Theme using the Nord Polar Night and Snow Storm palettes.",
+    "description": "Theme using the Nord palettes.",
     "version": "1.0",
     "authors": [
         {
@@ -8,8 +8,9 @@
             "id": "574669003755356162"
         }
     ],
+    "color": "#B48EAD",
 	"theme_color_map": {
-		"BACKGROUND_PRIMARY": ["#2E3440", "#ECEFF4"],
+		"BACKGROUND_PRIMARY": ["#434C5E", "#ECEFF4"],
 		"BACKGROUND_SECONDARY": ["#434C5E", "#E5E9F0"],
 		"BACKGROUND_SECONDARY_ALT": ["#3B4252", "#D8DEE9"],
 		"BACKGROUND_TERTIARY": ["#3B4252", "#D8DEE9"],
