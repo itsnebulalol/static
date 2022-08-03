@@ -204,10 +204,10 @@ setInterval(function () {
                 msgBox.append(
                     `${botTitle}Here's the ${cmd} you wanted!</span></div>`
                 );
-                msgBox.append(
-                    `<img src="${data.url}" width="200px" onload="<script>msgBox[0].scrollTop = msgBox[0].scrollHeight;</script>"></img>`
-                );
-                msgBox[0].scrollTop = msgBox[0].scrollHeight;
+                msgBox.append(`<img src="${data.url}" width="128px"></img>`);
+                setTimeout(function () {
+                    msgBox[0].scrollTop = msgBox[0].scrollHeight;
+                }, 1500);
             });
         } else {
             msgBox.append(
@@ -219,9 +219,11 @@ setInterval(function () {
             msgBox.append(
                 `${botTitle}Here's the neko you wanted!</span></div>`
             );
-            msgBox.append(
-                `<img src="${data.url}" width="200px" onload="<script>msgBox[0].scrollTop = msgBox[0].scrollHeight;</script>"></img>`
-            );
+            msgBox.append(`<img src="${data.url}" width="128px"></img>`);
+
+            setTimeout(function () {
+                msgBox[0].scrollTop = msgBox[0].scrollHeight;
+            }, 1500);
         });
     }
 }, 1000);
