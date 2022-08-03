@@ -70,6 +70,9 @@ setInterval(function () {
         msgBox.append(
             '<div style="color:#000000">- !lastfm <top|info> <username> | Get data from last.fm.</div>'
         );
+        msgBox.append(
+            '<div style="color:#000000">- !neko <cuddle|meow|pat|hug|meow|neko|woof> | Fetch an image from nekos.life.</div>'
+        );
         msgBox[0].scrollTop = msgBox[0].scrollHeight;
     }
 
@@ -201,7 +204,9 @@ setInterval(function () {
                 msgBox.append(
                     `${botTitle}Here's the ${cmd} you wanted!</span></div>`
                 );
-                msgBox.append(`<img src="${data.url}" width="128px"></img>`);
+                msgBox.append(
+                    `<img src="${data.url}" width="200px" onload="<script>msgBox[0].scrollTop = msgBox[0].scrollHeight;</script>"></img>`
+                );
                 msgBox[0].scrollTop = msgBox[0].scrollHeight;
             });
         } else {
@@ -214,8 +219,9 @@ setInterval(function () {
             msgBox.append(
                 `${botTitle}Here's the neko you wanted!</span></div>`
             );
-            msgBox.append(`<img src="${data.url}" width="128px"></img>`);
-            msgBox[0].scrollTop = msgBox[0].scrollHeight;
+            msgBox.append(
+                `<img src="${data.url}" width="200px" onload="<script>msgBox[0].scrollTop = msgBox[0].scrollHeight;</script>"></img>`
+            );
         });
     }
 }, 1000);
