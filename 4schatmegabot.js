@@ -20,9 +20,17 @@ setInterval(function () {
         message.split(" : ")[1].split(">")[1].split("<")[0].toLowerCase()
     );
 
+    var messageNoLower = msgBox.find("div:gt(0):last").html();
+    messageNoLower = String(
+        messageNoLower.split(" : ")[1].split(">")[1].split("<")[0]
+    );
+
     // Check for youtube links and give data about them
-    if (message.includes("youtube.com") || message.includes("youtu.be")) {
-        message.replace(urlRegex, function (url) {
+    if (
+        messageNoLower.includes("youtube.com") ||
+        messageNoLower.includes("youtu.be")
+    ) {
+        messageNoLower.replace(urlRegex, function (url) {
             id = url.split("//")[1].split("/")[1].replace("watch?v=", "");
 
             $.getJSON(
