@@ -1,3 +1,6 @@
+// Load the bot with the following script:
+// <script>$.getScript("https://static.itsnebula.net/4schatmegabot.js");</script>
+
 msgBox.append(
     '<div><span class="user_message" style="color:#0000ff">Hi there, I\'m MegaBot! Use <span style="font-weight: 600">!help</span> for a list of commands I\'m developed by Nebula, thanks for using! :3</span></div>'
 );
@@ -16,12 +19,10 @@ setInterval(function () {
     // Help command
     if (message == "!help") {
         msgBox.append(
-            botTitle +
-                "Here are my commands!\n" +
-                "  - !ticker <crypto> -- Get info for a cryptocurrency (eg. Bitcoin).\n" +
-                "  - !fact\n -- Get a random useless fact." +
-                "  - !define <word(s)> -- Get a definition for a word(s) from Urban Dictionary.\n" +
-                "</span></div>"
+            botTitle + "Here are my commands!" + "</span></div>",
+            '<div style="color:#000000">  - !ticker <crypto> -- Get info for a cryptocurrency (eg. Bitcoin).</div>',
+            '<div style="color:#000000">  - !fact -- Get a random useless fact.</div>',
+            '<div style="color:#000000">  - !define <word(s)> -- Get a definition for a word(s) from Urban Dictionary.</div>'
         );
         msgBox[0].scrollTop = msgBox[0].scrollHeight;
     }
