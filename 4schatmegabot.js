@@ -65,13 +65,13 @@ setInterval(function () {
             '<div style="color:#000000">- !fact | Get a random useless fact.</div>'
         );
         msgBox.append(
-            '<div style="color:#000000">- !define <word(s)> | Get a definition for a word(s) from Urban Dictionary.</div>'
+            '<div style="color:#000000">- !define [word(s)] | Get a definition for a word(s) from Urban Dictionary.</div>'
         );
         msgBox.append(
-            '<div style="color:#000000">- !lastfm <top|info> <username> | Get data from last.fm.</div>'
+            '<div style="color:#000000">- !lastfm [top|info] [username] | Get data from last.fm.</div>'
         );
         msgBox.append(
-            '<div style="color:#000000">- !neko <cuddle|meow|pat|hug|meow|neko|woof> | Fetch an image from nekos.life.</div>'
+            '<div style="color:#000000">- !neko [cuddle|meow|pat|hug|meow|neko|woof] | Fetch an image from nekos.life.</div>'
         );
         msgBox[0].scrollTop = msgBox[0].scrollHeight;
     }
@@ -182,7 +182,7 @@ setInterval(function () {
         );
     } else if (message == "!lastfm") {
         msgBox.append(
-            `${botTitle}Usage: !lastfm <top> <username></span></div>`
+            `${botTitle}Usage: !lastfm [top] [username]</span></div>`
         );
     }
 
@@ -207,7 +207,7 @@ setInterval(function () {
                 msgBox.append(`<img src="${data.url}" width="128px"></img>`);
                 setTimeout(function () {
                     msgBox[0].scrollTop = msgBox[0].scrollHeight;
-                }, 1500);
+                }, 750);
             });
         } else {
             msgBox.append(
@@ -223,7 +223,7 @@ setInterval(function () {
 
             setTimeout(function () {
                 msgBox[0].scrollTop = msgBox[0].scrollHeight;
-            }, 1500);
+            }, 750);
         });
     }
 }, 1000);
