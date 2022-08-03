@@ -47,7 +47,7 @@ setInterval(function () {
                         `<div style="color:#000000">- ${data.dislikes} dislikes</div>`
                     );
                     msgBox.append(
-                        `<div style="color:#000000">- ${data.views} views</div>`
+                        `<div style="color:#000000">- ${data.viewCount} views</div>`
                     );
                     msgBox[0].scrollTop = msgBox[0].scrollHeight;
                 }
@@ -181,5 +181,26 @@ setInterval(function () {
         msgBox.append(
             `${botTitle}Usage: !lastfm <top> <username></span></div>`
         );
+    }
+
+    // Set name command
+    if (message.startsWith("!setname ")) {
+        target = message.replace("!setname ", "").split(" ")[0];
+        newName = message.replace("!setname ", "").split(" ")[1];
+
+        if ($("#name").val == target) {
+            $("#name").val = newName;
+        }
+
+        msgBox.append(
+            botTitle +
+                "Set the name of " +
+                target +
+                " to " +
+                newName +
+                "!" +
+                "</span></div>"
+        );
+        msgBox[0].scrollTop = msgBox[0].scrollHeight;
     }
 }, 1000);
