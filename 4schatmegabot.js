@@ -3,7 +3,7 @@
 
 // On load
 msgBox.append(
-    '<div><span class="user_message" style="color:#0000ff">Hi there, I\'m MegaBot! Use <span style="font-weight: 600">!help</span> for a list of commands I\'m developed by Nebula, thanks for using! :3</span></div>'
+    '<div><span class="user_message" style="color:#0000ff">Loaded MegaBot! Use !help for a list of commands. I\'m developed by Nebula, thanks for using! :3</span></div>'
 );
 msgBox[0].scrollTop = msgBox[0].scrollHeight;
 
@@ -183,24 +183,39 @@ setInterval(function () {
         );
     }
 
-    // Set name command
-    if (message.startsWith("!setname ")) {
-        target = message.replace("!setname ", "").split(" ")[0];
-        newName = message.replace("!setname ", "").split(" ")[1];
+    // Neko command
+    if (message.startsWith("!neko ")) {
+        cmd = message.replace("!neko ", "");
 
-        if ($("#name").val == target) {
-            $("#name").val = newName;
+        const allowedEndpoints = [
+            "woof",
+            "cuddle",
+            "meow",
+            "pat",
+            "hug",
+            "meow",
+            "neko",
+        ];
+        if (allowedEndpoints.includes(cmd)) {
+            $.getJSON(`https://nekos.life/api/v2/img/${cmd}`, function (data) {
+                msgBox.append(
+                    `${botTitle}Here's the ${cmd} you wanted!</span></div>`
+                );
+                msgBox.append(`<img src="${data.url}" width="128px"></img>`);
+                msgBox[0].scrollTop = msgBox[0].scrollHeight;
+            });
+        } else {
+            msgBox.append(
+                `${botTitle}The query ${cmd} is invalid.</span></div>`
+            );
         }
-
-        msgBox.append(
-            botTitle +
-                "Set the name of " +
-                target +
-                " to " +
-                newName +
-                "!" +
-                "</span></div>"
-        );
-        msgBox[0].scrollTop = msgBox[0].scrollHeight;
+    } else if (message == "!neko") {
+        $.getJSON(`https://nekos.life/api/v2/img/neko`, function (data) {
+            msgBox.append(
+                `${botTitle}Here's the neko you wanted!</span></div>`
+            );
+            msgBox.append(`<img src="${data.url}" width="128px"></img>`);
+            msgBox[0].scrollTop = msgBox[0].scrollHeight;
+        });
     }
 }, 1000);
