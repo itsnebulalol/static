@@ -18,10 +18,14 @@ setInterval(function () {
 
     // Help command
     if (message == "!help") {
+        msgBox.append(botTitle + "Here are my commands!" + "</span></div>");
         msgBox.append(
-            botTitle + "Here are my commands!" + "</span></div>",
-            '<div style="color:#000000">  - !ticker <crypto> -- Get info for a cryptocurrency (eg. Bitcoin).</div>',
-            '<div style="color:#000000">  - !fact -- Get a random useless fact.</div>',
+            '<div style="color:#000000">  - !ticker <crypto> -- Get info for a cryptocurrency (eg. Bitcoin).</div>'
+        );
+        msgBox.append(
+            '<div style="color:#000000">  - !fact -- Get a random useless fact.</div>'
+        );
+        msgBox.append(
             '<div style="color:#000000">  - !define <word(s)> -- Get a definition for a word(s) from Urban Dictionary.</div>'
         );
         msgBox[0].scrollTop = msgBox[0].scrollHeight;
