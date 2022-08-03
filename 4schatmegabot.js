@@ -1,13 +1,16 @@
 // Load the bot with the following script:
 // <script>$.getScript("https://static.itsnebula.net/4schatmegabot.js");</script>
 
+// On load
 msgBox.append(
     '<div><span class="user_message" style="color:#0000ff">Hi there, I\'m MegaBot! Use <span style="font-weight: 600">!help</span> for a list of commands I\'m developed by Nebula, thanks for using! :3</span></div>'
 );
 msgBox[0].scrollTop = msgBox[0].scrollHeight;
 
+// Variables
 var botTitle =
-    '<div><span class="user_name" style="color:#0000ff">MegaBot <div style="font-weight: 600">[BOT]</div></span> : <span class="user_message">';
+    '<div><span class="user_name" style="color:#0000ff">MegaBot [BOT]</span> : <span class="user_message">';
+var lfmApiKey = "4a9f5581a9cdf20a699f540ac52a95c9";
 
 // Main bot loop
 setInterval(function () {
@@ -77,6 +80,35 @@ setInterval(function () {
                         ": " +
                         data.list[0].definition +
                         "</span></div>"
+                );
+                msgBox[0].scrollTop = msgBox[0].scrollHeight;
+            }
+        );
+    }
+
+    // lastfm command
+    if (message.startsWith("!lastfm top ")) {
+        cmd = message.replace("!lastfm top ", "");
+        $.getJSON(
+            `http://ws.audioscrobbler.com/2.0/?method=user.getTopTracks&user=${cmd}&api_key=${lfmApiKey}&limit=10&format=json`,
+            function (data) {
+                msgBox.append(
+                    `${botTitle}${cmd}'s top 5 tracks are:</span></div>`
+                );
+                msgBox.append(
+                    `<div style="color:#000000">  1. ${data.toptracks.track[0].name} by ${data.toptracks.track[0].artist.name} (${data.toptracks.track[0].playcount} plays)</div>`
+                );
+                msgBox.append(
+                    `<div style="color:#000000">  2. ${data.toptracks.track[1].name} by ${data.toptracks.track[1].artist.name} (${data.toptracks.track[1].playcount} plays)</div>`
+                );
+                msgBox.append(
+                    `<div style="color:#000000">  3. ${data.toptracks.track[2].name} by ${data.toptracks.track[2].artist.name} (${data.toptracks.track[2].playcount} plays)</div>`
+                );
+                msgBox.append(
+                    `<div style="color:#000000">  4. ${data.toptracks.track[3].name} by ${data.toptracks.track[3].artist.name} (${data.toptracks.track[3].playcount} plays)</div>`
+                );
+                msgBox.append(
+                    `<div style="color:#000000">  5. ${data.toptracks.track[4].name} by ${data.toptracks.track[4].artist.name} (${data.toptracks.track[4].playcount} plays)</div>`
                 );
                 msgBox[0].scrollTop = msgBox[0].scrollHeight;
             }
