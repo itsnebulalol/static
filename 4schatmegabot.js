@@ -27,6 +27,7 @@ setInterval(function () {
     sender = String(
         message.split(" : ")[0].split(">")[0].split("<")[1].toLowerCase()
     );
+    console.log(sender);
     message = String(
         message.split(" : ")[1].split(">")[1].split("<")[0].toLowerCase()
     );
@@ -288,7 +289,7 @@ setInterval(function () {
 
         msgBox.append(
             botTitle +
-                `Setting your color to ${cmd}... <script>console.log("${sender}"); if($('#name').val() == "${sender}") { color = "${cmd}" }</script></span></div>`
+                `Setting your color to ${cmd}... <script>if($('#name').val() == "${sender}") { color = "${cmd}"; }</script></span></div>`
         );
         setTimeout(function () {
             msgBox[0].scrollTop = msgBox[0].scrollHeight;
