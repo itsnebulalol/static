@@ -25,11 +25,11 @@ if (window.location.pathname.includes("/old")) {
 setInterval(function () {
     var message = msgBox.find("div:gt(0):last").html();
     sender = String(
-        message.split(" : ")[0].split(">")[0].split("<")[1].toLowerCase()
+        message.split(" : ")[0].split(">")[1].split("<")[0].toLowerCase()
     );
     console.log(sender);
     message = String(
-        message.split(" : ")[1].split(">")[0].split("<")[1].toLowerCase()
+        message.split(" : ")[1].split(">")[1].split("<")[0].toLowerCase()
     );
 
     var messageNoLower = msgBox.find("div:gt(0):last").html();
