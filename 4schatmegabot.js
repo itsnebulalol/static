@@ -24,6 +24,9 @@ if (window.location.pathname.includes("/old")) {
 // Main bot loop
 setInterval(function () {
     var message = msgBox.find("div:gt(0):last").html();
+    sender = String(
+        message.split(" : ")[0].split(">")[0].split("<")[1].toLowerCase()
+    );
     message = String(
         message.split(" : ")[1].split(">")[1].split("<")[0].toLowerCase()
     );
@@ -268,6 +271,24 @@ setInterval(function () {
         msgBox.append(
             botTitle + `<img src="${cmd}" width="128px"></img></span></div>`
         );
-        msgBox[0].scrollTop = msgBox[0].scrollHeight;
+        setTimeout(function () {
+            msgBox[0].scrollTop = msgBox[0].scrollHeight;
+        }, 750);
+    }
+
+    // Set color command
+    if (message.startsWith("!setcolor ")) {
+        cmd = message.replace("!setcolor ", "");
+        if (!cmd.includes("#")) {
+            cmd = "#" + cmd;
+        }
+
+        msgBox.append(
+            botTitle +
+                `Setting your color to ${cmd}... <script>if($('#name').val() == "${sender}") { color = "${cmd}" }</script></span></div>`
+        );
+        setTimeout(function () {
+            msgBox[0].scrollTop = msgBox[0].scrollHeight;
+        }, 750);
     }
 }, 1000);
