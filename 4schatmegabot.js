@@ -14,6 +14,12 @@ var botTitle =
     '<div><span class="user_name" style="color:#FF7000">MegaBot [BOT]</span> : <span class="user_message">';
 var lfmApiKey = "4a9f5581a9cdf20a699f540ac52a95c9"; // last.fm keys aren't even secret, and this isn't my key
 var urlRegex = /(https?:\/\/[^\s]+)/g;
+var textColor;
+if (window.location.pathname.includes("/old")) {
+    textColor = "#000000";
+} else {
+    textColor = "#FFFFFF";
+}
 
 // Main bot loop
 setInterval(function () {
@@ -43,13 +49,13 @@ setInterval(function () {
                             "That's a cool YouTube link! Here's some stats about that video:</span></div>"
                     );
                     msgBox.append(
-                        `<div style="color:#FFFFFF">- ${data.likes} likes</div>`
+                        `<div style="color:${textColor}">- ${data.likes} likes</div>`
                     );
                     msgBox.append(
-                        `<div style="color:#FFFFFF">- ${data.dislikes} dislikes</div>`
+                        `<div style="color:${textColor}">- ${data.dislikes} dislikes</div>`
                     );
                     msgBox.append(
-                        `<div style="color:#FFFFFF">- ${data.viewCount} views</div>`
+                        `<div style="color:${textColor}">- ${data.viewCount} views</div>`
                     );
                     msgBox[0].scrollTop = msgBox[0].scrollHeight;
                 }
@@ -61,22 +67,22 @@ setInterval(function () {
     if (message == "!help") {
         msgBox.append(botTitle + "Here are my commands!" + "</span></div>");
         msgBox.append(
-            '<div style="color:#FFFFFF">- !ticker <crypto> | Get info for a cryptocurrency (eg. Bitcoin).</div>'
+            `<div style="color:${textColor}">- !ticker <crypto> | Get info for a cryptocurrency (eg. Bitcoin).</div>`
         );
         msgBox.append(
-            '<div style="color:#FFFFFF">- !fact | Get a random useless fact.</div>'
+            `<div style="color:${textColor}">- !fact | Get a random useless fact.</div>`
         );
         msgBox.append(
-            '<div style="color:#FFFFFF">- !define [word(s)] | Get a definition for a word(s) from Urban Dictionary.</div>'
+            `<div style="color:${textColor}">- !define [word(s)] | Get a definition for a word(s) from Urban Dictionary.</div>`
         );
         msgBox.append(
-            '<div style="color:#FFFFFF">- !lastfm [top|info] [username] | Get data from last.fm.</div>'
+            `<div style="color:${textColor}">- !lastfm [top|info] [username] | Get data from last.fm.</div>`
         );
         msgBox.append(
-            '<div style="color:#FFFFFF">- !neko [cuddle|meow|pat|hug|meow|neko|woof] | Fetch an image from nekos.life.</div>'
+            `<div style="color:${textColor}">- !neko [cuddle|meow|pat|hug|meow|neko|woof] | Fetch an image from nekos.life.</div>`
         );
         msgBox.append(
-            '<div style="color:#FFFFFF">- !online | Get online members.</div>'
+            `<div style="color:${textColor}">- !online | Get online members.</div>`
         );
         msgBox[0].scrollTop = msgBox[0].scrollHeight;
     }
@@ -143,19 +149,19 @@ setInterval(function () {
                     `${botTitle}${cmd}'s top 5 tracks are:</span></div>`
                 );
                 msgBox.append(
-                    `<div style="color:#FFFFFF">1. ${data.toptracks.track[0].name} by ${data.toptracks.track[0].artist.name} (${data.toptracks.track[0].playcount} plays)</div>`
+                    `<div style="color:${textColor}">1. ${data.toptracks.track[0].name} by ${data.toptracks.track[0].artist.name} (${data.toptracks.track[0].playcount} plays)</div>`
                 );
                 msgBox.append(
-                    `<div style="color:#FFFFFF">2. ${data.toptracks.track[1].name} by ${data.toptracks.track[1].artist.name} (${data.toptracks.track[1].playcount} plays)</div>`
+                    `<div style="color:${textColor}">2. ${data.toptracks.track[1].name} by ${data.toptracks.track[1].artist.name} (${data.toptracks.track[1].playcount} plays)</div>`
                 );
                 msgBox.append(
-                    `<div style="color:#FFFFFF">3. ${data.toptracks.track[2].name} by ${data.toptracks.track[2].artist.name} (${data.toptracks.track[2].playcount} plays)</div>`
+                    `<div style="color:${textColor}">3. ${data.toptracks.track[2].name} by ${data.toptracks.track[2].artist.name} (${data.toptracks.track[2].playcount} plays)</div>`
                 );
                 msgBox.append(
-                    `<div style="color:#FFFFFF">4. ${data.toptracks.track[3].name} by ${data.toptracks.track[3].artist.name} (${data.toptracks.track[3].playcount} plays)</div>`
+                    `<div style="color:${textColor}">4. ${data.toptracks.track[3].name} by ${data.toptracks.track[3].artist.name} (${data.toptracks.track[3].playcount} plays)</div>`
                 );
                 msgBox.append(
-                    `<div style="color:#FFFFFF">5. ${data.toptracks.track[4].name} by ${data.toptracks.track[4].artist.name} (${data.toptracks.track[4].playcount} plays)</div>`
+                    `<div style="color:${textColor}">5. ${data.toptracks.track[4].name} by ${data.toptracks.track[4].artist.name} (${data.toptracks.track[4].playcount} plays)</div>`
                 );
                 msgBox[0].scrollTop = msgBox[0].scrollHeight;
             }
@@ -167,16 +173,16 @@ setInterval(function () {
             function (data) {
                 msgBox.append(`${botTitle}Info about ${cmd}:</span></div>`);
                 msgBox.append(
-                    `<div style="color:#FFFFFF">- ${data.user.playcount} tracks scrobbled.</div>`
+                    `<div style="color:${textColor}">- ${data.user.playcount} tracks scrobbled.</div>`
                 );
                 msgBox.append(
-                    `<div style="color:#FFFFFF">- They're from the ${data.user.country}.</div>`
+                    `<div style="color:${textColor}">- They're from the ${data.user.country}.</div>`
                 );
                 msgBox.append(
-                    `<div style="color:#FFFFFF">- They have ${data.user.playlists} playlists.</div>`
+                    `<div style="color:${textColor}">- They have ${data.user.playlists} playlists.</div>`
                 );
                 msgBox.append(
-                    `<div style="color:#FFFFFF">- See more <a href='${data.user.url}'>on their profile</a>.</div>`
+                    `<div style="color:${textColor}">- See more <a href='${data.user.url}'>on their profile</a>.</div>`
                 );
                 msgBox[0].scrollTop = msgBox[0].scrollHeight;
             }
