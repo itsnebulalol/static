@@ -84,6 +84,12 @@ setInterval(function () {
         msgBox.append(
             `<div style="color:${textColor}">- !online | Get online members.</div>`
         );
+        msgBox.append(
+            `<div style="color:${textColor}">- !embedlink <url> | Embed a URL.</div>`
+        );
+        msgBox.append(
+            `<div style="color:${textColor}">- !embedimg <img> | Embed an image.</div>`
+        );
         msgBox[0].scrollTop = msgBox[0].scrollHeight;
     }
 
@@ -243,6 +249,24 @@ setInterval(function () {
         msgBox.append(
             botTitle +
                 "Getting online members... <script>document.getElementById('message').value = ' is online'; send_message();</script></span></div>"
+        );
+        msgBox[0].scrollTop = msgBox[0].scrollHeight;
+    }
+
+    // Embed link command
+    if (message.startsWith("!embedlink ")) {
+        cmd = message.replace("!embedlink ", "");
+
+        msgBox.append(botTitle + `<a href="${cmd}">${cmd}</a></span></div>`);
+        msgBox[0].scrollTop = msgBox[0].scrollHeight;
+    }
+
+    // Embed image command
+    if (message.startsWith("!embedimg ")) {
+        cmd = message.replace("!embedimg ", "");
+
+        msgBox.append(
+            botTitle + `<img src="${cmd}" width="128px"></img></span></div>`
         );
         msgBox[0].scrollTop = msgBox[0].scrollHeight;
     }
