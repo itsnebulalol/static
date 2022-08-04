@@ -75,6 +75,9 @@ setInterval(function () {
         msgBox.append(
             '<div style="color:#FFFFFF">- !neko [cuddle|meow|pat|hug|meow|neko|woof] | Fetch an image from nekos.life.</div>'
         );
+        msgBox.append(
+            '<div style="color:#FFFFFF">- !online | Get online members.</div>'
+        );
         msgBox[0].scrollTop = msgBox[0].scrollHeight;
     }
 
@@ -233,7 +236,7 @@ setInterval(function () {
     if (message == "!online") {
         msgBox.append(
             botTitle +
-                "Getting online members... <script>var on = document.getElementById('name').value; document.getElementById('message').value = on + ' is online'; document.getElementById('name').value = 'System'; send_message(); document.getElementById('name').value = on;</script></span></div>"
+                "Getting online members... <script>var on = document.getElementById('name').value; var co = color; document.getElementById('message').value = on + ' is online'; document.getElementById('name').value = 'System'; color = '#FF7000'; send_message(); document.getElementById('name').value = on; color = co;</script></span></div>"
         );
         msgBox[0].scrollTop = msgBox[0].scrollHeight;
     }
