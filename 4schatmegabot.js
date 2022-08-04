@@ -93,6 +93,9 @@ setInterval(function () {
         msgBox.append(
             `<div style="color:${textColor}">- !embedimg <img> | Embed an image.</div>`
         );
+        msgBox.append(
+            `<div style="color:${textColor}">- !setcolor <hex color> | Set your color.</div>`
+        );
         msgBox[0].scrollTop = msgBox[0].scrollHeight;
     }
 
@@ -285,7 +288,7 @@ setInterval(function () {
 
         msgBox.append(
             botTitle +
-                `Setting your color to ${cmd}... <script>if($('#name').val() == "${sender}") { color = "${cmd}" }</script></span></div>`
+                `Setting your color to ${cmd}... <script>console.log("${sender}"); if($('#name').val() == "${sender}") { color = "${cmd}" }</script></span></div>`
         );
         setTimeout(function () {
             msgBox[0].scrollTop = msgBox[0].scrollHeight;
