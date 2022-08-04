@@ -242,7 +242,7 @@ setInterval(function () {
     if (message == "!online") {
         msgBox.append(
             botTitle +
-                `Getting online members... <img src="http://4s.sudaox.com/media/pfp.png" onload="var theName = document.getElementById('name').value; msgBox.append('${botTitle}' + theName + ' is online</span></div>');" width="0px"></img></span></div>`
+                `Getting online members... <img src="http://4s.sudaox.com/media/pfp.png" onload="var theName = document.getElementById('name').value; msgBox.append('<div><span class=\"user_name\" style=\"color:#FF7000\">MegaBot [BOT]</span> : <span class=\"user_message\">' + theName + ' is online</span></div>');" width="0px"></img></span></div>`
         );
         msgBox[0].scrollTop = msgBox[0].scrollHeight;
     }
