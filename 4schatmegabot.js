@@ -6,6 +6,7 @@ msgBox.append(
     '<div><span class="user_message" style="color:#0000ff">Loaded MegaBot! Use !help for a list of commands. I\'m developed by Nebula, thanks for using! :3</span></div>'
 );
 msgBox[0].scrollTop = msgBox[0].scrollHeight;
+megabot_instance == true;
 
 // Variables
 var botTitle =
