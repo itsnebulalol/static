@@ -199,6 +199,22 @@ setInterval(function () {
                 msgBox[0].scrollTop = msgBox[0].scrollHeight;
             }
         );
+    } else if (message.startsWith("!lastfm playing ")) {
+        cmd = message.replace("!lastfm playing ", "");
+        $.getJSON(
+            `http://ws.audioscrobbler.com/2.0/?method=user.getRecentTracks&user=${cmd}&limit=1&api_key=${lfmApiKey}&format=json`,
+            function (data) {
+                if(data.recenttracks.track[0]["@attr"].nowplaying) {
+                    msgBox.append(
+                        `${botTitle}${cmd} is currently playing ${data.recenttracks.track[0].name} by ${data.recenttracks.track[0].artist["#text"]}</span></div>`
+                    );
+                    msgBox[0].scrollTop = msgBox[0].scrollHeight;
+                } else {
+                    msgBox.append(`${botTitle}${cmd} is currently not playing anything.</span></div>`);
+                    msgBox[0].scrollTop = msgBox[0].scrollHeight;
+                }
+            }
+        );
     } else if (message.startsWith("!lastfm ")) {
         msgBox.append(
             `${botTitle}Wrong usage! Correct usage: !lastfm <top> <username></span></div>`
