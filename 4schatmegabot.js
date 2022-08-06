@@ -1,6 +1,4 @@
 // MegaBot by Nebula! Made for Nathan's 4s chat server
-// This code is overly scuffed as there no API
-// It just listens for messages
 
 // On load
 msgBox.append(
@@ -22,8 +20,12 @@ if (window.location.pathname.includes("/old")) {
 }
 
 // Main bot loop
-setInterval(function () {
-    var message = msgBox.find("div:gt(0):last").html();
+function megabot_handleMessage(json) {
+    console.table(json);
+    var message = json.message.toLowerCase();
+    var sender = json.name;
+    var messageNoLower = json.message;
+    /*var message = msgBox.find("div:gt(0):last").html();
     sender = String(
         message.split(" : ")[0].split(">")[1].split("<")[0].toLowerCase()
     );
@@ -34,7 +36,7 @@ setInterval(function () {
     var messageNoLower = msgBox.find("div:gt(0):last").html();
     messageNoLower = String(
         messageNoLower.split(" : ")[1].split(">")[1].split("<")[0]
-    );
+    );*/
 
     // Check for youtube links and give data about them
     if (
@@ -64,6 +66,7 @@ setInterval(function () {
                 }
             );
         });
+        return;
     }
 
     // Help command
@@ -97,6 +100,7 @@ setInterval(function () {
             `<div style="color:${textColor}">- !setcolor <hex color> | Set your color.</div>`
         );
         msgBox[0].scrollTop = msgBox[0].scrollHeight;
+        return;
     }
 
     // Ticker command
@@ -117,6 +121,7 @@ setInterval(function () {
                 msgBox[0].scrollTop = msgBox[0].scrollHeight;
             }
         );
+        return;
     }
 
     // Random fact command
@@ -130,6 +135,7 @@ setInterval(function () {
             );
             msgBox[0].scrollTop = msgBox[0].scrollHeight;
         });
+        return;
     }
 
     // Urban Dictionary command
@@ -149,6 +155,7 @@ setInterval(function () {
                 msgBox[0].scrollTop = msgBox[0].scrollHeight;
             }
         );
+        return;
     }
 
     // lastfm command
@@ -178,6 +185,7 @@ setInterval(function () {
                 msgBox[0].scrollTop = msgBox[0].scrollHeight;
             }
         );
+        return;
     } else if (message.startsWith("!lastfm info ")) {
         cmd = message.replace("!lastfm info ", "");
         $.getJSON(
@@ -199,30 +207,36 @@ setInterval(function () {
                 msgBox[0].scrollTop = msgBox[0].scrollHeight;
             }
         );
+        return;
     } else if (message.startsWith("!lastfm playing ")) {
         cmd = message.replace("!lastfm playing ", "");
         $.getJSON(
             `http://ws.audioscrobbler.com/2.0/?method=user.getRecentTracks&user=${cmd}&limit=1&api_key=${lfmApiKey}&format=json`,
             function (data) {
-                if(data.recenttracks.track[0]["@attr"].nowplaying) {
+                if (data.recenttracks.track[0]["@attr"].nowplaying) {
                     msgBox.append(
                         `${botTitle}${cmd} is currently playing ${data.recenttracks.track[0].name} by ${data.recenttracks.track[0].artist["#text"]}</span></div>`
                     );
                     msgBox[0].scrollTop = msgBox[0].scrollHeight;
                 } else {
-                    msgBox.append(`${botTitle}${cmd} is currently not playing anything.</span></div>`);
+                    msgBox.append(
+                        `${botTitle}${cmd} is currently not playing anything.</span></div>`
+                    );
                     msgBox[0].scrollTop = msgBox[0].scrollHeight;
                 }
             }
         );
+        return;
     } else if (message.startsWith("!lastfm ")) {
         msgBox.append(
             `${botTitle}Wrong usage! Correct usage: !lastfm <top> <username></span></div>`
         );
+        return;
     } else if (message == "!lastfm") {
         msgBox.append(
             `${botTitle}Usage: !lastfm [top] [username]</span></div>`
         );
+        return;
     }
 
     // Neko command
@@ -246,13 +260,14 @@ setInterval(function () {
                 msgBox.append(`<img src="${data.url}" width="128px"></img>`);
                 setTimeout(function () {
                     msgBox[0].scrollTop = msgBox[0].scrollHeight;
-                }, 750);
+                }, 250);
             });
         } else {
             msgBox.append(
                 `${botTitle}The query ${cmd} is invalid.</span></div>`
             );
         }
+        return;
     } else if (message == "!neko") {
         $.getJSON(`https://nekos.life/api/v2/img/neko`, function (data) {
             msgBox.append(
@@ -262,8 +277,9 @@ setInterval(function () {
 
             setTimeout(function () {
                 msgBox[0].scrollTop = msgBox[0].scrollHeight;
-            }, 750);
+            }, 250);
         });
+        return;
     }
 
     // Online command
@@ -273,26 +289,28 @@ setInterval(function () {
                 "Getting online members... <script>document.getElementById('message').value = ' is online'; send_message();</script></span></div>"
         );
         msgBox[0].scrollTop = msgBox[0].scrollHeight;
+        return;
     }
 
     // Embed link command
-    if (message.startsWith("!embedlink ")) {
-        cmd = message.replace("!embedlink ", "");
+    if (messageNoLower.startsWith("!embedlink ")) {
+        cmd = messageNoLower.replace("!embedlink ", "");
 
         msgBox.append(botTitle + `<a href="${cmd}">${cmd}</a></span></div>`);
         msgBox[0].scrollTop = msgBox[0].scrollHeight;
+        return;
     }
 
     // Embed image command
-    if (message.startsWith("!embedimg ")) {
-        cmd = message.replace("!embedimg ", "");
+    if (messageNoLower.startsWith("!embedimg ")) {
+        cmd = messageNoLower.replace("!embedimg ", "");
 
-        msgBox.append(
-            botTitle + `<img src="${cmd}" width="128px"></img></span></div>`
-        );
+        msgBox.append(botTitle + `Here's your image!</span></div>`);
+        msgBox.append(`<img src="${cmd}" width="128px"></img>`);
         setTimeout(function () {
             msgBox[0].scrollTop = msgBox[0].scrollHeight;
         }, 750);
+        return;
     }
 
     // Set color command
@@ -306,8 +324,17 @@ setInterval(function () {
             botTitle +
                 `Setting your color to ${cmd}... <script>if(document.getElementById('name').value == "${sender}") { color = "${cmd}"; }</script></span></div>`
         );
-        setTimeout(function () {
-            msgBox[0].scrollTop = msgBox[0].scrollHeight;
-        }, 750);
+        msgBox[0].scrollTop = msgBox[0].scrollHeight;
+        return;
     }
-}, 1000);
+
+    // Return command not found
+    if (message.startsWith("!")) {
+        msgBox.append(
+            botTitle +
+                `Command not found! Use !help for a list of commands.</span></div>`
+        );
+        msgBox[0].scrollTop = msgBox[0].scrollHeight;
+        return;
+    }
+}
