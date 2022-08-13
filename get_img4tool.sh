@@ -22,7 +22,7 @@ else
             
             latestBuild=$(curl --silent "https://api.github.com/repos/tihmstar/img4tool/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
             link="https://github.com/tihmstar/img4tool/releases/download/${latestBuild}/buildroot_${OS}-latest.zip"
-            curl -L "$link" --output img4tool-latest.zip
+            curl -sLO "$link"
             IMG4TOOL_TEMP=$(mktemp -d 'img4tool.XXXXXXX')
             unzip -q img4tool-latest.zip -d "$IMG4TOOL_TEMP"
             echo "[*] Terminal may ask for permission to move the files into '/usr/local/bin' and '/usr/local/include', please enter your password if it does"
