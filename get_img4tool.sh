@@ -1,6 +1,18 @@
 echo "img4tool downloader -- Originally from Deverser"
 echo ""
 
+unamestr=$(uname)
+if [ "$unamestr" = "Darwin" ]; then
+    OS=macos
+    echo "[!] macOS detected!"
+    elif [ "$unamestr" = "Linux" ]; then
+    OS=ubuntu
+    echo "[!] Linux detected!"
+else
+    echo "Not running on macOS or Linux. exiting..."
+    exit 1
+fi
+
 if command -v img4tool >/dev/null; then
     echo "[!] img4tool is already installed at $(command -v img4tool)!"
     exit
@@ -20,10 +32,10 @@ else
             
             echo "[!] Downloading latest img4tool from tihmstar's repo..."
             
-            latestBuild=$(curl --silent "https://api.github.com/repos/tihmstar/img4tool/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
+            latestBuild=$(curl -s "https://api.github.com/repos/tihmstar/img4tool/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
             link="https://github.com/tihmstar/img4tool/releases/download/${latestBuild}/buildroot_${OS}-latest.zip"
-            curl -sLO "$link"
-            IMG4TOOL_TEMP=$(mktemp -d 'img4tool.XXXXXXX')
+            curl -L "$link" -o img4tool-latest.zip -s
+            IMG4TOOL_TEMP=$(mktemp -d)
             unzip -q img4tool-latest.zip -d "$IMG4TOOL_TEMP"
             echo "[*] Terminal may ask for permission to move the files into '/usr/local/bin' and '/usr/local/include', please enter your password if it does"
             sudo install -m755 "$IMG4TOOL_TEMP/buildroot_$OS-latest/usr/local/bin/img4tool" /usr/local/bin/img4tool
