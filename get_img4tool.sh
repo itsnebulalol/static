@@ -23,7 +23,7 @@ else
     case $consent in
         [Yy]* )
             
-            if which curl >/dev/null; then
+            if command -v curl >/dev/null; then
                 echo "[i] curl is installed!"
             else
                 echo "[!] curl is required for this script to download img4tool."
